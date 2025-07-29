@@ -1,3 +1,4 @@
+import CollectionCard from "@/components/CollectionCard";
 import CreateCollectionBtn from "@/components/CreateCollectionBtn";
 import SadFace from "@/components/icons/SadFace";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -52,6 +53,9 @@ async function CollectionList() {
     where: {
       userId: user?.id,
     },
+    orderBy: {
+      createdAt: 'asc',
+    },
   })
 
   if (collections.length === 0) {
@@ -68,9 +72,16 @@ async function CollectionList() {
   }
 
   return (
-    <div>
-      Collections: {collections.length}
+    <>
       <CreateCollectionBtn />
-    </div>
+      <div className="flex flex-col gap-4 mt-4">
+        {collections.map((collection) => (
+          <CollectionCard 
+            key={collection.id}
+            collection={collection}
+          />
+        ))}
+      </div>
+    </>
   );
 }

@@ -12,7 +12,7 @@ export default function CreateCollectionBtn() {
       <div className="rounded-md w-full bg-white dark:bg-neutral-950">
         <Button
           variant="ghost"
-          className="w-full dark:text-white bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-900 cursor-pointer"
+          className="w-full dark:text-white bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-900"
           onClick={() => setOpen(true)}
         >
           <span className="bg-gradient-to-r from-red-500 to-orange-500 hover:to-orange-800 bg-clip-text text-transparent">

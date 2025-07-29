@@ -124,7 +124,6 @@ export default function CreateCollectionSheet({ open, onOpenChange }: CreateColl
             disabled={form.formState.isSubmitting}
             variant={"outline"}
             className={cn(
-              "cursor-pointer",
               form.watch("color") &&
                 CollectionColors[form.getValues("color") as CollectionColor],
             )} 

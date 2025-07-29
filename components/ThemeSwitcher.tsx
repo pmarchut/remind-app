@@ -21,13 +21,13 @@ export default function ThemeSwitcher() {
   return (
     <Tabs defaultValue={theme}>
       <TabsList className="border dark:border-neutral-800 dark:bg-[#030303]">
-        <TabsTrigger value='light' onClick={() => setTheme('light')} className="cursor-pointer">
+        <TabsTrigger value='light' onClick={() => setTheme('light')}>
           <SunIcon className="h-[1.2rem] w-[1.2rem]" />
         </TabsTrigger>
-        <TabsTrigger value='dark' onClick={() => setTheme('dark')} className="cursor-pointer">
+        <TabsTrigger value='dark' onClick={() => setTheme('dark')}>
           <MoonIcon className="h-[1.2rem] w-[1.2rem] rotate-90 transition-all dark:rotate-0" />
         </TabsTrigger>
-        <TabsTrigger value='system' onClick={() => setTheme('system')} className="cursor-pointer">
+        <TabsTrigger value='system' onClick={() => setTheme('system')}>
           <MonitorIcon className="h-[1.2rem] w-[1.2rem]" />
         </TabsTrigger>
       </TabsList>
