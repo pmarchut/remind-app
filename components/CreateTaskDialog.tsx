@@ -16,7 +16,6 @@ import { Calendar } from "./ui/calendar";
 import { format } from "date-fns";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ca } from "date-fns/locale";
 import { createTask } from "@/actions/task";
 import { toast } from "sonner";
 
