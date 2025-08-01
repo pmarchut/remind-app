@@ -1,6 +1,6 @@
 "use client";
 import { Collection, Task } from "@/lib/generated/prisma";
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
 import { cn } from "@/lib/utils";
 import { CollectionColor, CollectionColors } from "@/lib/constants";
@@ -46,6 +46,14 @@ export default function CollectionCard({ collection }: Props) {
     }
   }
 
+  const tasksDone = useMemo(() => {
+    return collection.tasks.filter((task) => task.done).length;
+  }, [collection.tasks]);
+
+  const totalTasks = collection.tasks.length;
+
+  const progress = totalTasks === 0 ? 0 : (tasksDone / totalTasks) * 100;
+
   return (
     <>
       <CreateTaskDialog 
@@ -81,7 +89,7 @@ export default function CollectionCard({ collection }: Props) {
           )}
           {tasks.length > 0 && (
             <>
-              <Progress className="rounded-none" value={45} />
+              <Progress className="rounded-none" value={progress} />
               <div className="p-4 gap-3 flex flex-col">
                 {tasks.map((task) => (
                   <TaskCard key={task.id} task={task} />
