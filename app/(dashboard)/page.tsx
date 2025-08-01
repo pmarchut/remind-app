@@ -50,6 +50,9 @@ function WelcomeMsgFallback() {
 async function CollectionList() {
   const user = await currentUser();
   const collections = await prisma.collection.findMany({
+    include: {
+      tasks: true, // Include tasks if needed, or remove this line if not required
+    },
     where: {
       userId: user?.id,
     },
