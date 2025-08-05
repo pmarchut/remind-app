@@ -41,7 +41,7 @@ export default function CreateCollectionSheet({ open, onOpenChange }: CreateColl
       toast("Success", {
         description: "Collection created successfully!",
       })
-    } catch (error: any) {
+    } catch (error) {
       // Show toast
       toast.error("Error", {
         description: "Something went wrong while creating the collection.",

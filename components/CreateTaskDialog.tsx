@@ -51,7 +51,7 @@ export default function CreateTaskDialog({  open, collection, setOpen }: CreateT
       })
       openChangeWrapper(false);
       router.refresh();
-    } catch (error) {
+    } catch {
       toast.error("Error", {
         description: "Cannot create task",
       })
