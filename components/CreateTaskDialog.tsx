@@ -1,5 +1,5 @@
 "use client";
-import { Collection } from "@/lib/generated/prisma";
+import { Collection } from ".prisma/client";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader } from "./ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";

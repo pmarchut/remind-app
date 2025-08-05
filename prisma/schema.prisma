@@ -4,7 +4,6 @@
 generator client {
   provider      = "prisma-client-js"
   previewFeatures = ["driverAdapters"] // <- neon.tech
-  output   = "../lib/generated/prisma"
 }
 
 datasource db {

@@ -1,6 +1,6 @@
 "use client";
 
-import { Task } from "@/lib/generated/prisma";
+import { Task } from ".prisma/client";
 import { Checkbox } from "./ui/checkbox";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
