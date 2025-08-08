@@ -4,7 +4,7 @@ import SadFace from "@/components/icons/SadFace";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { prisma } from "@/lib/prisma";
-import { currentUser } from "@clerk/nextjs/server";
+import { stackServerApp } from "@/stack";
 import { Suspense } from "react";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
 }
 
 async function WelcomeMsg() {
-  const user = await currentUser();
+  const user = await stackServerApp.getUser();
 
   if (!user) {
     return <div>Please sign in to access the application.</div>;
@@ -30,7 +30,7 @@ async function WelcomeMsg() {
   return (
     <div className="flex w-full mb-12">
       <h1 className="text-4xl font-bold">
-        Welcome, <br /> {user.firstName} {user.lastName}
+        Welcome, <br /> {user.displayName}
       </h1>
     </div>
   );
@@ -48,7 +48,7 @@ function WelcomeMsgFallback() {
 }
 
 async function CollectionList() {
-  const user = await currentUser();
+  const user = await stackServerApp.getUser();
   const collections = await prisma.collection.findMany({
     include: {
       tasks: true, // Include tasks if needed, or remove this line if not required

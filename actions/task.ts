@@ -2,10 +2,10 @@
 
 import { prisma } from "@/lib/prisma";
 import { createTaskSchemaType } from "@/schema/createTask";
-import { currentUser } from "@clerk/nextjs/server";
+import { stackServerApp } from "@/stack";
 
 export async function createTask(data: createTaskSchemaType) {
-    const user = await currentUser();
+    const user = await stackServerApp.getUser();
     
     if (!user) {
         throw new Error("user not found");
@@ -28,7 +28,7 @@ export async function createTask(data: createTaskSchemaType) {
 }
 
 export async function setTaskToDone(id: number) {
-    const user = await currentUser();
+    const user = await stackServerApp.getUser();
     
     if (!user) {
         throw new Error("user not found");

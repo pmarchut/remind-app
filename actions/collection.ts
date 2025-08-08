@@ -1,10 +1,10 @@
 "use server";
 import { prisma } from "@/lib/prisma";
 import { createCollectionSchemaType } from "@/schema/createCollection";
-import { currentUser } from "@clerk/nextjs/server";
+import { stackServerApp } from "@/stack";
 
 export async function createCollection(form: createCollectionSchemaType) {
-    const user = await currentUser();
+    const user = await stackServerApp.getUser();
 
     if (!user) {
         throw new Error("user not found");
@@ -20,7 +20,7 @@ export async function createCollection(form: createCollectionSchemaType) {
 }
 
 export async function deleteCollection(id: number) {
-    const user = await currentUser();
+    const user = await stackServerApp.getUser();
 
     if (!user) {
         throw new Error("user not found");

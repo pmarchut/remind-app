@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
-import { ClerkProvider } from '@clerk/nextjs'
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
@@ -29,27 +30,23 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
-      <html 
-        lang="en"
-        className={cn(geistSans.variable, geistMono.variable, "antialiased", "dark")}
-        style={{
-          colorScheme: "dark",
-        }}
-      >
-        <body>
-          <ThemeProvider>
-            <div className='flex min-h-screen w-full flex-col items-center dark:bg-black'>
-              <NavBar />
-              <Separator />
-              <main className="flex flex-grow w-full justify-center items-center dark:bg-neutral-950">
-                {children}
-                <Toaster />
-              </main>
-            </div>
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html 
+      lang="en"
+      className={cn(geistSans.variable, geistMono.variable, "antialiased")}
+      suppressHydrationWarning
+    >
+      <body><StackProvider app={stackServerApp}><StackTheme>
+        <ThemeProvider>
+          <div className='flex min-h-screen w-full flex-col items-center dark:bg-black'>
+            <NavBar />
+            <Separator />
+            <main className="flex flex-grow w-full justify-center items-center dark:bg-neutral-950">
+              {children}
+              <Toaster />
+            </main>
+          </div>
+        </ThemeProvider>
+      </StackTheme></StackProvider></body>
+    </html>
   )
 }
