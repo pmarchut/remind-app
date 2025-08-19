@@ -37,9 +37,13 @@ export default function RootLayout({
     >
       <body><StackProvider app={stackServerApp}><StackTheme>
         <ThemeProvider>
-          <div className='flex min-h-screen w-full flex-col items-center dark:bg-black'>
-            <NavBar />
-            <Separator />
+          <div className='flex min-h-screen w-full flex-col items-center'>
+            <div className="w-full overflow-x-auto">
+              <div className="min-w-max">
+                <NavBar />
+                <Separator className="w-full" />
+              </div>
+            </div>
             <main className="flex flex-grow w-full justify-center items-center dark:bg-neutral-950">
               {children}
               <Toaster />
